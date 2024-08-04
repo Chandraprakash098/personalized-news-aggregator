@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Signup() {
   const [error, setError] = useState(null);
@@ -25,7 +27,11 @@ export default function Signup() {
     const data = await res.json();
 
     if (res.ok) {
-      router.push("/login");
+      toast.success("Registered successfully!", {
+        position: toast.POSITION.TOP_CENTER,
+        autoClose: 3000, // 3 seconds
+        onClose: () => router.push("/login"),
+      });
     } else {
       setError(data.message);
     }
@@ -120,7 +126,8 @@ export default function Signup() {
           </form>
         </div>
       </div>
-      <Footer/>
+      <Footer />
+      <ToastContainer />
     </>
   );
 }
