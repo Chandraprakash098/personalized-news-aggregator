@@ -30,7 +30,6 @@ export default function Signup() {
 
       if (res.ok) {
         toast.success("Registered successfully!", {
-          position: toast.POSITION.TOP_CENTER,
           autoClose: 3000, // 3 seconds
         });
 
