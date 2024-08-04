@@ -16,27 +16,34 @@ export default function Signup() {
     const password = e.target.password.value;
     const address = e.target.address.value;
 
-    const res = await fetch("/api/auth/signup", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ name, email, password, address }),
-    });
-
-    const data = await res.json();
-
-    if (res.ok) {
-      toast.success("Registered successfully!", {
-        position: toast.POSITION.TOP_CENTER,
-        autoClose: 3000, // 3 seconds
+    try {
+      const res = await fetch("/api/auth/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name, email, password, address }),
       });
 
-      setTimeout(() => {
-        router.push("/login");
-      }, 3000); // 3 seconds
-    } else {
-      setError(data.message);
+      const data = await res.json();
+      console.log("Response data:", data);
+
+      if (res.ok) {
+        toast.success("Registered successfully!", {
+          position: toast.POSITION.TOP_CENTER,
+          autoClose: 3000, // 3 seconds
+        });
+
+        setTimeout(() => {
+          router.push("/login");
+        }, 3000); // 3 seconds
+      } else {
+        setError(data.message);
+        console.error("Error message:", data.message);
+      }
+    } catch (err) {
+      setError("Something went wrong. Please try again.");
+      console.error("Error:", err);
     }
   };
 
