@@ -29,9 +29,12 @@ export default function Signup() {
     if (res.ok) {
       toast.success("Registered successfully!", {
         position: toast.POSITION.TOP_CENTER,
-        autoClose: 6000, // 3 seconds
-        onClose: () => router.push("/login"),
+        autoClose: 3000, // 3 seconds
       });
+
+      setTimeout(() => {
+        router.push("/login");
+      }, 3000); // 3 seconds
     } else {
       setError(data.message);
     }
@@ -117,7 +120,7 @@ export default function Signup() {
                 type="submit"
                 className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-purple-600 hover:to-pink-500 text-white font-bold py-3 px-6 rounded-full focus:outline-none focus:shadow-outline transition-transform transform hover:scale-105"
               >
-                Sign Up
+                Register
               </button>
             </div>
             {error && (
