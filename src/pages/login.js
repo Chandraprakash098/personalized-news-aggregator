@@ -31,12 +31,12 @@ export default function Login() {
       setError(result.error);
     } else {
       toast.success("Login successful!", {
-        autoClose: 3000, // 3 seconds
+        autoClose: 6000, 
       });
 
       setTimeout(() => {
         router.push("/news");
-      }, 3000); // Redirect after 3 seconds
+      }, 6000); 
     }
   };
 
