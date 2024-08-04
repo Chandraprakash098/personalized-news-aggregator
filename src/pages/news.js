@@ -36,7 +36,7 @@ export default function News() {
 
   if (!session) {
     return (
-      <p className="text-center text-lg font-semibold">
+      <p className="text-center text-lg font-semibold text-gray-800 bg-gradient-to-r from-green-500 to-blue-600 bg-clip-text text-transparent p-4 rounded-lg shadow-lg">
         You need to be logged in to view this page.
       </p>
     );
