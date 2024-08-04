@@ -123,7 +123,7 @@ export default function Home() {
                 desc: "Get a balanced view from a wide range of trusted sources.",
               },
               {
-                title: "AI-Powered Recommendations",
+                title: "Easy To Use",
                 desc: "Receive articles curated just for you by our advanced algorithms.",
               },
             ].map((feature, index) => (
